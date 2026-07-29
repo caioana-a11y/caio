@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copa do Mundo - Histórias, Jogos e Busca</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-900 text-white font-sans min-h-screen flex flex-col">
+
+  <header class="bg-slate-800 border-b border-slate-700 py-6 px-4 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">🏆</span>
+        <h1 class="text-2xl font-bold tracking-wide text-amber-400">Mundo Copa</h1>
+      </div>
+      
+      <div class="relative w-full md:w-96">
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Pesquise por seleção, ano, jogador..." 
+          class="w-full bg-slate-900 border border-slate-700 rounded-full py-2 px-4 pl-10 text-sm focus:outline-none focus:border-amber-400 transition"
+        >
+        <span class="absolute left-3 top-2.5 text-slate-400">🔍</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-8 flex-grow">
+    
+    <section class="mb-12">
+      <h2 class="text-xl font-bold mb-6 text-slate-200 border-l-4 border-amber-400 pl-3">
+        Jogos e Edições Históricas
+      </h2>
+
+      <div id="cardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="card bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-amber-400 transition" data-keywords="brasil alemanha 2002 penta ronaldo final">
+          <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80" alt="Copa do Mundo" class="w-full h-48 object-cover">
+          <div class="p-5">
+            <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-2 py-1 rounded">Final 2002</span>
+            <h3 class="text-lg font-bold mt-2">Brasil 2 x 0 Alemanha</h3>
+            <p class="text-slate-400 text-sm mt-2">Com dois gols de Ronaldo Fenômeno, o Brasil conquistou o seu quinto título mundial no Japão.</p>
+          </div>
+        </div>
+
+        <div class="card bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-amber-400 transition" data-keywords="argentina frança 2022 messi mbappe qatar final">
+          <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=600&q=80" alt="Estádio de Futebol" class="w-full h-48 object-cover">
+          <div class="p-5">
+            <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-2 py-1 rounded">Final 2022</span>
+            <h3 class="text-lg font-bold mt-2">Argentina 3 (4) x (2) 3 França</h3>
+            <p class="text-slate-400 text-sm mt-2">Uma das maiores finais de todos os tempos. Messi consagrou-se campeão nos pênaltis em um jogo eletrizante no Catar.</p>
+          </div>
+        </div>
+
+        <div class="card bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-amber-400 transition" data-keywords="brasil italia 1970 pele tri mexico final">
+          <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80" alt="Bola de Futebol" class="w-full h-48 object-cover">
+          <div class="p-5">
+            <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-2 py-1 rounded">Final 1970</span>
+            <h3 class="text-lg font-bold mt-2">Brasil 4 x 1 Itália</h3>
+            <p class="text-slate-400 text-sm mt-2">A seleção de ouro liderada por Pelé deu um show no México e conquistou o tricampeonato em definitivo.</p>
+          </div>
+        </div>
+
+        <div class="card bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-amber-400 transition" data-keywords="espanha holanda 2010 iniesta africa do sul final">
+          <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80" alt="Torcida" class="w-full h-48 object-cover">
+          <div class="p-5">
+            <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-2 py-1 rounded">Final 2010</span>
+            <h3 class="text-lg font-bold mt-2">Espanha 1 x 0 Holanda</h3>
+            <p class="text-slate-400 text-sm mt-2">Com gol de Iniesta na prorrogação, a Espanha venceu a Holanda e conquistou seu primeiro título mundial.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p id="noResults" class="hidden text-center text-slate-400 mt-8">Nenhum resultado encontrado para a sua busca.</p>
+    </section>
+
+    <section class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 md:p-8">
+      <h2 class="text-xl font-bold mb-4 text-amber-400 flex items-center gap-2">
+        <span>⚽</span> Minijogo: Quiz da Copa
+      </h2>
+      <p class="text-slate-300 text-sm mb-6">Teste seus conhecimentos sobre o torneio!</p>
+
+      <div id="quizContainer">
+        <p id="quizQuestion" class="text-lg font-semibold mb-4 text-white">Carregando pergunta...</p>
+        <div id="quizOptions" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+        <p id="quizFeedback" class="mt-4 font-bold text-sm hidden"></p>
+        <button id="nextBtn" class="mt-4 bg-amber-400 text-slate-900 font-bold px-4 py-2 rounded-lg text-sm hover:bg-amber-300 transition hidden">Próxima Pergunta</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-slate-800 border-t border-slate-700 py-4 text-center text-slate-500 text-sm">
+    <p>Projeto de Site sobre a Copa do Mundo • Desenvolvido com HTML, CSS e JS</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
