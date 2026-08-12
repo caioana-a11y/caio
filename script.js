@@ -1,23 +1,35 @@
-// script.js
-
-// Executa o código após o carregamento completo do HTML
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Script carregado com sucesso!');
+  // Alternância de Tema de Contraste / Modo Escuro
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const themeText = document.getElementById('themeText');
 
-  // Exemplo 1: Selecionar um elemento e escutar um clique de botão
-  const meuBotao = document.querySelector('#meuBotao');
-  
-  if (meuBotao) {
-    meuBotao.addEventListener('click', () => {
-      alert('O botão foi clicado!');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const isDark = currentTheme === 'dark';
+
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        themeToggle.setAttribute('aria-pressed', 'false');
+        themeIcon.textContent = '🌙';
+        themeText.textContent = 'Alto Contraste';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggle.setAttribute('aria-pressed', 'true');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = 'Modo Claro';
+      }
     });
   }
 
-  // Exemplo 2: Função simples de cálculo ou manipulação
-  function saudarUsuario(nome) {
-    return `Olá, ${nome}! Bem-vindo ao site.`;
+  // Validação e Feedback do Formulário de Contato
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Obrigado pelo contato! Sua mensagem foi enviada com sucesso.');
+      e.target.reset();
+    });
   }
-
-  // Exemplo de uso da função
-  console.log(saudarUsuario('Dev'));
 });
